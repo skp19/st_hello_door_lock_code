@@ -47,7 +47,7 @@ def settings() {
             if((notificationType == "Text Message") || (notificationType == "Both")) {
                 input "phone1", "phone", title: "Phone number to send message to", required: false
             }
-            if(notificationType != "None") {
+            if(notificationType != "None" && notificationType) {
 	            input "visitorMsg", "text", title: "Message to send", required: false
             }
         }
