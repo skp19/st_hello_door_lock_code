@@ -20,7 +20,7 @@ preferences {
 }
 
 def settings() {
-	dynamicPage(name: "settings", title: "Settings", uninstall:true, install:false) {        
+	dynamicPage(name: "settings", title: "Settings", uninstall:true, install:true) {        
         section("Choose Lock") {
             input "lock1", "capability.lock", title: "Which lock?", multiple: false
         }
@@ -31,25 +31,25 @@ def settings() {
         section("Change Mode or Run Hello Home Action?") {
             input "actionType", "enum", title: "Action Type", metadata: [values: ["Change Mode", "Run Hello Home Action"]], defaultValue: "Change Mode", refreshAfterSelection: true
 
-			if (actionType == "Change Mode") {
+//			if (actionType == "Change Mode") {
             	input "visitormode", "mode", title: "Change to this mode when the unlock code is entered", required: false
-            }
+//            }
             
-			if (actionType == "Run Hello Home Action") {
+//			if (actionType == "Run Hello Home Action") {
                 if (phrases) {
                     phrases.sort()
                     input name: "homeAction", type: "enum", title: "Run this Hello Home Action when the unlock code is entered", required: false, options: phrases, refreshAfterSelection: true
                 }
-            }
+//            }
         }
         section("Visitor Notification Details") {
             input "notificationType", "enum", title: "Notification Type", metadata: [values: ["None", "Push Message", "Text Message", "Both"]], defaultValue: "None", refreshAfterSelection: true
-            if((notificationType == "Text Message") || (notificationType == "Both")) {
+//            if((notificationType == "Text Message") || (notificationType == "Both")) {
                 input "phone1", "phone", title: "Phone number to send message to", required: false
-            }
-            if(notificationType != "None" && notificationType) {
+//            }
+//            if(notificationType != "None" && notificationType) {
 	            input "visitorMsg", "text", title: "Message to send", required: false
-            }
+//            }
         }
         section("User Code Discovery Mode (Enable and unlock the door using desired code. A message will be sent containing the user code used to unlock the door.)") {
             input "discoveryMode", "bool", title: "Enable"
